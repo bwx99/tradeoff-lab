@@ -1,0 +1,42 @@
+[
+  {
+    "question": "How many consecutive hours can an employee work before a mandatory break is required?",
+    "reference_answer": "10 hours, followed by a mandatory 30-minute break."
+  },
+  {
+    "question": "What must be done before operating a forklift at the start of a shift?",
+    "reference_answer": "Complete the pre-operation inspection checklist."
+  },
+  {
+    "question": "Within what time frame must package damage be reported after it's discovered?",
+    "reference_answer": "Within 2 hours of discovery."
+  },
+  {
+    "question": "What is the facility's on-time delivery target?",
+    "reference_answer": "95%."
+  },
+  {
+    "question": "By what time must overnight shipments be sorted?",
+    "reference_answer": "4:00 AM."
+  },
+  {
+    "question": "How long is the new hire safety orientation before working on the floor?",
+    "reference_answer": "3 days."
+  },
+  {
+    "question": "Within what time frame must an injury be reported to a supervisor?",
+    "reference_answer": "Within 1 hour, regardless of severity."
+  },
+  {
+    "question": "At what volume threshold do peak surge protocols activate?",
+    "reference_answer": "When daily volume exceeds 120% of the rolling 30-day average."
+  },
+  {
+    "question": "Below what temperature must temperature-sensitive packages be stored, and how quickly must they be moved after arrival?",
+    "reference_answer": "Below 40°F, and moved within 15 minutes of arrival."
+  },
+  {
+    "question": "What must drivers complete before every route?",
+    "reference_answer": "A vehicle safety check."
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "config": "mini + minimal prompt",
+    "model": "gpt-4o-mini",
+    "accuracy_pct": 100.0,
+    "avg_latency_sec": 2.37,
+    "avg_cost_usd": 5e-05,
+    "total_cost_usd": 0.00048
+  },
+  {
+    "config": "mini + detailed prompt",
+    "model": "gpt-4o-mini",
+    "accuracy_pct": 100.0,
+    "avg_latency_sec": 1.46,
+    "avg_cost_usd": 5e-05,
+    "total_cost_usd": 0.00053
+  },
+  {
+    "config": "gpt-4o + minimal prompt",
+    "model": "gpt-4o",
+    "accuracy_pct": 100.0,
+    "avg_latency_sec": 1.07,
+    "avg_cost_usd": 0.00079,
+    "total_cost_usd": 0.00793
+  }
+]
