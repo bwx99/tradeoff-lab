@@ -10,6 +10,8 @@ import json
 import pandas as pd
 import streamlit as st
 
+from runner import CONFIGS, ask
+
 st.set_page_config(page_title="Tradeoff Lab", page_icon="⚖️")
 
 st.title("Tradeoff Lab")
@@ -78,3 +80,51 @@ st.caption(
     "Change a prompt or model in runner.py, run `python runner.py` again, "
     "then refresh this page to compare a new setup."
 )
+
+st.divider()
+st.subheader("Try it yourself")
+st.caption(
+    "Ask your own question about the (fictional) Meridian Logistics policy "
+    "handbook and watch each setup answer it live, with real cost and speed."
+)
+
+with st.form("live_ask"):
+    question = st.text_input(
+        "Your question", placeholder="e.g. What is the injury reporting window?"
+    )
+    chosen_names = st.multiselect(
+        "Which setups should answer?",
+        options=[c["name"] for c in CONFIGS],
+        default=[c["name"] for c in CONFIGS],
+    )
+    submitted = st.form_submit_button("Ask")
+
+if submitted:
+    if not question.strip():
+        st.warning("Type a question first.")
+    elif not chosen_names:
+        st.warning("Pick at least one setup.")
+    else:
+        chosen = [c for c in CONFIGS if c["name"] in chosen_names]
+        live_rows = []
+        for config in chosen:
+            with st.spinner(f"Asking {config['name']}..."):
+                try:
+                    answer, latency, cost = ask(config, question)
+                except Exception as e:
+                    st.error(f"{config['name']} failed: {e}")
+                    continue
+            live_rows.append(
+                {
+                    "Setup": config["name"],
+                    "Model": config["model"],
+                    "Answer": answer,
+                    "Latency (s)": round(latency, 2),
+                    "Cost ($)": round(cost, 5),
+                }
+            )
+        if live_rows:
+            st.dataframe(
+                pd.DataFrame(live_rows).set_index("Setup"),
+                use_container_width=True,
+            )
